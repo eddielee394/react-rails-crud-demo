@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+10.times { Item.create!(name: "Item", description: "I am a description.") }
 #   Character.create(name: 'Luke', movie: movies.first)
