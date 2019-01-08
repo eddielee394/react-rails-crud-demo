@@ -1,13 +1,5 @@
 import React from "react"
 
-const styles = {
-  content: {
-    border: '1px solid #2196F3',
-    padding: '15px',
-    marginBottom: '10px'
-  }
-};
-
 class Header extends React.Component {
   render () {
     return (
@@ -17,5 +9,12 @@ class Header extends React.Component {
     );
   }
 }
+const styles = {
+  content: {
+    border: '1px solid #2196F3',
+    padding: '15px',
+    marginBottom: '10px'
+  }
+};
 
 export default Header

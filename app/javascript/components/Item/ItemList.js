@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 import Item from "./Item";
-const styles = {
-  content: {
-    border: '1px solid #00BCD4',
-    padding: '15px'
-  }
-};
 
 class ItemList extends Component {
   render() {
@@ -22,5 +16,12 @@ class ItemList extends Component {
     );
   }
 }
+
+const styles = {
+  content: {
+    border: "1px solid #673ab7",
+    padding: "15px"
+  }
+};
 
 export default ItemList;

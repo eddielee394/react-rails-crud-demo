@@ -1,7 +1,18 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { Component } from "react";
 import Header from "./Header";
 import Body from "./Body";
+
+class Main extends Component {
+  render() {
+    return (
+      <div style={styles.content}>
+        <h1>This is the Main layout component</h1>
+        <Header />
+        <Body />
+      </div>
+    );
+  }
+}
 
 const styles = {
   content: {
@@ -11,20 +22,4 @@ const styles = {
   }
 };
 
-class Main extends React.Component {
-
-  render () {
-    return (
-      <div style={styles.content}>
-        <h1>This is the Main layout component</h1>
-        <Header/>
-        <Body />
-      </div>
-    );
-  }
-}
-
-Main.propTypes = {
-  greeting: PropTypes.string
-};
-export default Main
+export default Main;
