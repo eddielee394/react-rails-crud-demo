@@ -6,24 +6,6 @@ class ItemCreate extends Component {
     showForm: true
   };
 
-  storeItem = (item, callback) => {
-    let body = JSON.stringify({ item });
-
-    this.props.setLoading();
-
-    fetch("http://localhost:3001/api/v1/items", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: body
-    })
-      .then(response => response.json())
-      .then(response => this.props.setItemsState(response))
-      .then(response => callback())
-      .catch(error => console.log("Error adding item", error));
-  };
-
   setShowFormState = () => {
     this.setState(prevState => ({
       showForm: !prevState.showForm
@@ -35,7 +17,7 @@ class ItemCreate extends Component {
 
     const { item } = this.state;
 
-    this.storeItem(item, this.handleFormReset);
+    this.props.handleCreateItem(item, this.handleFormReset);
   };
 
   handleShowForm = e => {

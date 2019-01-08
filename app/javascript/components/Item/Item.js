@@ -12,7 +12,8 @@ const styles = {
 };
 
 const Item = props => {
-  const { item } = props;
+  const { item, handleDeleteItem, isLoading } = props;
+  const btnIsDisabled = isLoading ? "disabled" : "";
 
   return (
     <div style={styles.content}>
@@ -23,6 +24,12 @@ const Item = props => {
       <p>itemId {item.id}</p>
       <p>itemName {item.name}</p>
       <p>itemDescription {item.description}</p>
+      <button
+        onClick={() => handleDeleteItem(item.id)}
+        disabled={btnIsDisabled}
+      >
+        Delete Item
+      </button>
     </div>
   );
 };
