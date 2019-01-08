@@ -70,7 +70,6 @@ class ItemContainer extends Component {
         "Content-Type": "application/json"
       }
     })
-      .then(response => response.json())
       .then(() => this.deleteItemsState(id))
       .then(() => callback())
       .then(() => this.props.setLoading())
