@@ -19,7 +19,7 @@ Application with basic CRUD functionality using Rails 5 as a backend & React 16 
 - [x] Setup initial data fetch in react components
 - [x] Add crud view create
 - [ ] Add crud view update
-- [ ] Add crud delete 
+- [x] Add crud delete 
 - [ ] Add lazy loading for items list
 - [ ] Add style fixes & sass support
 - [ ] Make a sandwich  
