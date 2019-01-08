@@ -14,21 +14,32 @@ class ItemList extends Component {
     } = this.props;
 
     return (
-      <div style={styles.content}>
+      <div className="container-fluid" style={styles.content}>
         <h3>This is an ItemList component</h3>
-        <ItemCreate handleCreateItem={handleCreateItem} isLoading={isLoading} />
+        <div className="row">
+          <div className="col-12">
+            <ItemCreate
+              handleCreateItem={handleCreateItem}
+              isLoading={isLoading}
+            />
+          </div>
+        </div>
         {items.map(item => (
-          <div key={item.id}>
-            <Item
-              item={item}
-              handleDeleteItem={handleDeleteItem}
-              isLoading={isLoading}
-            />
-            <ItemUpdate
-              item={item}
-              handleUpdateItem={handleUpdateItem}
-              isLoading={isLoading}
-            />
+          <div className="row" key={item.id}>
+            <div className="col-12 col-md-6">
+              <Item
+                item={item}
+                handleDeleteItem={handleDeleteItem}
+                isLoading={isLoading}
+              />
+            </div>
+            <div className="col-12 col-md-6">
+              <ItemUpdate
+                item={item}
+                handleUpdateItem={handleUpdateItem}
+                isLoading={isLoading}
+              />
+            </div>
           </div>
         ))}
       </div>
