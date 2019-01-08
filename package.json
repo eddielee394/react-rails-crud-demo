@@ -2,11 +2,14 @@
   "name": "react_rails",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.8.2",
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
+    "bootstrap": "^4.2.1",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-icons": "^3.2.2",
     "react_ujs": "^2.4.4"
   },
   "devDependencies": {
