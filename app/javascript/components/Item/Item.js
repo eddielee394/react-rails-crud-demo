@@ -1,16 +1,5 @@
 import React from "react";
 
-const styles = {
-  content: {
-    border: "1px solid #00d4c0",
-    padding: "15px",
-    margin: "10px"
-  },
-  subheader: {
-    fontWeight: 700
-  }
-};
-
 const Item = props => {
   const { item, handleDeleteItem, isLoading } = props;
   const btnIsDisabled = isLoading ? "disabled" : "";
@@ -32,6 +21,17 @@ const Item = props => {
       </button>
     </div>
   );
+};
+
+const styles = {
+  content: {
+    border: "1px solid #00d4c0",
+    padding: "15px",
+    margin: "10px"
+  },
+  subheader: {
+    fontWeight: 700
+  }
 };
 
 export default Item;
