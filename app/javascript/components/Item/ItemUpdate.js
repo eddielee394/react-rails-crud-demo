@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class ItemCreate extends Component {
+class ItemUpdate extends Component {
   state = {
-    item: { name: "", description: "" },
-    showForm: true
+    item: this.props.item,
+    showForm: false
   };
 
   setShowFormState = () => {
@@ -15,7 +15,7 @@ class ItemCreate extends Component {
   handleItemSubmit = e => {
     e.preventDefault();
     const { item } = this.state;
-    this.props.handleCreateItem(item, this.handleFormReset);
+    this.props.handleUpdateItem(item, this.handleFormReset);
   };
 
   handleShowForm = e => {
@@ -47,10 +47,10 @@ class ItemCreate extends Component {
     const { item, showForm } = this.state;
 
     const btnIsDisabled = this.props.isLoading ? "disabled" : "";
-    const formBtnText = showForm ? "Hide Item Form" : "Show Item Form";
+    const formBtnText = showForm ? "Hide Edit Item Form" : "Show Edit Item Form";
 
-    const itemCreateForm = showForm && (
-      <form onSubmit={this.handleItemSubmit} method="POST">
+    const itemUpdateForm = showForm && (
+      <form onSubmit={this.handleItemSubmit} method="PUT">
         <input
           name="name"
           value={item.name}
@@ -71,7 +71,7 @@ class ItemCreate extends Component {
 
     return (
       <div className="item-create-container" style={styles.content}>
-        <h3>This is the ItemCreate component</h3>
+        <h3>This is the ItemUpdate component</h3>
         <div
           className="item-showform-button-container"
           style={styles.formButtonContainer}
@@ -82,7 +82,7 @@ class ItemCreate extends Component {
           className="item-create-form-container"
           style={styles.formContainer}
         >
-          {itemCreateForm}
+          {itemUpdateForm}
         </div>
       </div>
     );
@@ -91,7 +91,7 @@ class ItemCreate extends Component {
 
 const styles = {
   content: {
-    border: "1px solid #ff9800",
+    border: "1px solid #ffc107",
     padding: "15px",
     margin: "10px"
   },
@@ -104,4 +104,4 @@ const styles = {
   }
 };
 
-export default ItemCreate;
+export default ItemUpdate;

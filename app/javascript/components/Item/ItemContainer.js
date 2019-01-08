@@ -36,13 +36,32 @@ class ItemContainer extends Component {
       body: body
     })
       .then(response => response.json())
-      .then(response => this.updateItemsState(response))
-      .then(response => callback())
+      .then(response => this.createItemsState(response))
+      .then(() => callback())
       .then(() => this.props.setLoading())
       .catch(error => console.log("Error adding item", error));
   };
 
-  deleteItem = id => {
+  updateItem = (item, callback) => {
+    let body = JSON.stringify({ item });
+
+    this.props.setLoading();
+
+    fetch(`http://localhost:3001/api/v1/items/${item.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: body
+    })
+      .then(response => response.json())
+      .then(response => this.updateItemsState(response))
+      .then(() => callback())
+      .then(() => this.props.setLoading())
+      .catch(error => console.log("Error updating item", error));
+  };
+
+  deleteItem = (id, callback) => {
     this.props.setLoading();
 
     fetch(`http://localhost:3001/api/v1/items/${id}`, {
@@ -51,14 +70,30 @@ class ItemContainer extends Component {
         "Content-Type": "application/json"
       }
     })
-      .then(response => this.deleteItemsState(id))
-      .then(response => console.log("item deleted", response))
-      .then(() => this.props.setLoading());
+      .then(response => response.json())
+      .then(() => this.deleteItemsState(id))
+      .then(() => callback())
+      .then(() => this.props.setLoading())
+      .catch(error => console.log("Error deleting item", error));
+  };
+
+  createItemsState = item => {
+    const { items } = this.state;
+    this.setState({ items: [...items, item] });
   };
 
   updateItemsState = item => {
-    const { items } = this.state;
-    this.setState({ items: [...items, item] });
+    this.setState(prevState => {
+      const updatedItems = prevState.items.map(_item => {
+        if (_item.id === item.id) {
+          return { ..._item, ...item };
+        } else {
+          return _item;
+        }
+      });
+
+      return { items: updatedItems };
+    });
   };
 
   deleteItemsState = id => {
@@ -78,9 +113,10 @@ class ItemContainer extends Component {
 
     return (
       <div>
-        <ItemCreate handleCreateItem={this.createItem} isLoading={isLoading} />
         <ItemList
           items={items}
+          handleCreateItem={this.createItem}
+          handleUpdateItem={this.updateItem}
           handleDeleteItem={this.deleteItem}
           isLoading={isLoading}
         />
